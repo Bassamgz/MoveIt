@@ -59,5 +59,11 @@ namespace MoveIt.Core.Service
         {
             _clientRepository.Update(client);
         }
+
+        public Client GetClient(string email)
+        {
+            var client = _clientRepository.GetClient(email);
+            return client;
+        }
     }
 }

@@ -65,6 +65,23 @@ namespace MoveIt.Web.MoveIt.Models
     public class RegisterViewModel
     {
         [Required]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Building Number")]
+        public int BuildingNumber { get; set; }
+
+        [Required]
+        public string Street { get; set; }
+
+        [Required]
+        public string City { get; set; }
+
+        [Required]
+        [Display(Name = "Postal Code")]
+        public string PostalCode { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -79,6 +96,8 @@ namespace MoveIt.Web.MoveIt.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+
     }
 
     public class ResetPasswordViewModel

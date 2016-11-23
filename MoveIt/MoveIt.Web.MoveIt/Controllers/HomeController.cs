@@ -16,6 +16,7 @@ namespace MoveIt.Web.MoveIt.Controllers
         private string priceLogicAPI = WebConfigurationManager.AppSettings["PriceLogicAPI"];
         private string _proposalApi = WebConfigurationManager.AppSettings["ProposalsAPI"];
 
+
         public ActionResult Index()
         {
             return View();

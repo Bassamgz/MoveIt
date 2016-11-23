@@ -41,5 +41,11 @@ namespace MoveIt.Core.Data.Repositories
         {
             return DbContext.Clients.Count(e => e.Email == email) > 0;
         }
+
+        public Client GetClient(string email)
+        {
+            var client = DbContext.Clients.FirstOrDefault(item => item.Email == email);
+            return client;
+        }
     }
 }

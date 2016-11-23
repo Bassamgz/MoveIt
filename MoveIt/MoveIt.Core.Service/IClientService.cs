@@ -21,5 +21,6 @@ namespace MoveIt.Core.Service
 
         bool ClientExists(string email);
         void UpdateClient(Client client);
+        Client GetClient(string email);
     }
 }

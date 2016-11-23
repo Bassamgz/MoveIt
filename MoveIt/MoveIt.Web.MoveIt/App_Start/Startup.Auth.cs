@@ -54,9 +54,9 @@ namespace MoveIt.Web.MoveIt
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "207233236387560",
+               appSecret: "b9856a3f64d0249c026198268a0eff99");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {

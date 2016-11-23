@@ -12,19 +12,21 @@
 <h2>
     Get a Proposal
 </h2>
-
+@Html.ValidationSummary("", new { @class = "text-danger" })
 <div class="form-horizontal">
 
     <div class="col-md-4">
         <label for="distance">Distance (km)</label>
-        <input type="number" class="form-control" id="distance" min="1" required="required">
+        <input type="number" class="form-control" id="distance" min="1" required="required" placeholder="How long?">
+        <span class="error">This field is required</span>
 
     </div>
 </div>
 <div class="form-horizontal">
     <div class="col-md-4">
         <label for="volume">Volume (m^2)</label>
-        <input type="number" class="form-control" id="volume" min="1" required="required">
+        <input type="number" class="form-control" id="volume" min="1" required="required" placeholder="How Many?">
+        <span class="error">This field is required</span>
 
     </div>
 </div>
@@ -82,4 +84,9 @@
     .top-buffer {
         margin-top: 20px;
     }
+
+    .error{
+	display: none;
+	margin-left: 10px;
+}
 </style>

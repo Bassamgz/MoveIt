@@ -13,5 +13,6 @@ namespace MoveIt.Core.Data.Repositories
         bool ClientExists(long clientID);
 
         bool ClientExists(string email);
+        Client GetClient(string email);
     }
 }

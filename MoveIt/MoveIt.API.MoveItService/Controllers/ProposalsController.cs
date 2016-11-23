@@ -99,11 +99,10 @@ namespace MoveIt.API.MoveItService.Controllers
         [ResponseType(typeof(ProposalDTO))]
         public IHttpActionResult PostProposal(ProposalDTO dtoProposal)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var client = _clientService.GetClient(dtoProposal.Email);
+
             var proposal = Mapper.Map<Proposal>(dtoProposal);
+            proposal.ClientID = client.ID;
             _proposalService.CreateProposal(proposal);
 
             try
