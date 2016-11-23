@@ -1,0 +1,85 @@
+﻿@model MoveIt.Core.Data.Model.DTO.PriceLogicDTO
+
+@{
+    ViewBag.Title = "MoveIt";
+}
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<div class="jumbotron">
+    <h1>MoveIt</h1>
+    <p class="lead">Simple Fictious MVC app to propose you some offers you couldn't refuse to trasnport your stuff around.</p>
+</div>
+
+<h2>
+    Get a Proposal
+</h2>
+
+<div class="form-horizontal">
+
+    <div class="col-md-4">
+        <label for="distance">Distance (km)</label>
+        <input type="number" class="form-control" id="distance" min="1" required="required">
+
+    </div>
+</div>
+<div class="form-horizontal">
+    <div class="col-md-4">
+        <label for="volume">Volume (m^2)</label>
+        <input type="number" class="form-control" id="volume" min="1" required="required">
+
+    </div>
+</div>
+<div class="form-horizontal">
+    <div class="col-md-4">
+        <label for="hasPiano">Move A Piano?</label>
+        <input type="checkbox" class="form-control" id="hasPiano">
+
+    </div>
+
+</div>
+<div class="form-horizontal top-buffer">
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary" id="calculate">Surprise Me!</button>
+    </div>
+
+</div>
+
+<div class="top-buffer" id="costTable">
+
+    @{Html.RenderPartial("CostView", Model);}
+
+</div>
+
+<script type="text/javascript">
+    $(document)
+        .ready(function () {
+
+            $('#costTable').hide();
+            $('#calculate')
+                .click(function () {
+                    retrievePriceLogic();
+                });
+        });
+
+    function retrievePriceLogic() {
+        var distance = $('#distance').val();
+        var volume = $('#volume').val();
+        if ((distance >= 1) || volume >= 1) {
+            var hasPiano = $('#hasPiano').prop('checked');
+            $.ajax({
+                url: '@Url.Action("PriceLogic", "Home")',
+                data: { "distance": distance, "volume": volume, "hasPiano": hasPiano },
+                cache: false,
+                success: function (data) {
+                    $("#costTable").html(data);
+                }
+            });
+            $('#costTable').show();
+        }
+    };
+</script>
+
+<style>
+    .top-buffer {
+        margin-top: 20px;
+    }
+</style>

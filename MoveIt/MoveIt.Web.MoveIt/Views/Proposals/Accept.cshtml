@@ -1,0 +1,73 @@
+﻿@using MoveIt.Core.Data.Model.DTO
+@model MoveIt.Core.Data.Model.DTO.ProposalDTO
+
+@{
+    ViewBag.Title = "Accept";
+}
+
+<h2>Accept</h2>
+<h3>Are you sure you want to Accept this?</h3>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProposalDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Distance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Volume)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HasPiano)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.IsAccepted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+    @if (Model != null)
+    {
+        <tr class="danger">
+            <td>
+                @Html.DisplayFor(model => Model.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(model => Model.ProposalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => Model.Distance)
+            </td>
+            <td>
+                @Html.DisplayFor(model => Model.Volume)
+            </td>
+            <td>
+                @Html.DisplayFor(model => Model.HasPiano)
+            </td>
+
+            <td>
+                Pending <span class="glyphicon glyphicon-remove-circle"></span>
+            </td>
+            <td>
+                @Html.DisplayFor(model => Model.Price)
+            </td>
+        </tr>
+    }
+</table>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+    <div class="form-actions no-color">
+        <input type="submit" value="Save" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}
+

@@ -1,0 +1,110 @@
+﻿@model IEnumerable<MoveIt.Core.Data.Model.DTO.ProposalDTO>
+
+@{
+    ViewBag.Title = "Offers";
+}
+
+<h2>Offers</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProposalDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Distance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Volume)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HasPiano)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.IsAccepted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AcceptanceDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            if (item.IsAccepted)
+            {
+                <tr class="success">
+                    <td>
+                        @Html.DisplayFor(model => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.ProposalDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Distance)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Volume)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.HasPiano)
+                    </td>
+
+                    <td>
+                        Accepted <span class="glyphicon glyphicon-ok-circle"></span>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.AcceptanceDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Price)
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr class="danger">
+                    <td>
+                        @Html.DisplayFor(model => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.ClientID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.ProposalDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Distance)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Volume)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.HasPiano)
+                    </td>
+
+                    <td>
+                        Pending <span class="glyphicon glyphicon-remove-circle"></span>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.AcceptanceDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Price)
+                    </td>
+                </tr>
+            }
+        }
+    }
+
+</table>
+
+
